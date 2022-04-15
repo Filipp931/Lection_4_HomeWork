@@ -1,4 +1,4 @@
-package DAO;
+package DAO.Exceptions;
 
 public class AccountNotFoundException extends Exception{
     public AccountNotFoundException(String message) {

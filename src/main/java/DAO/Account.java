@@ -1,5 +1,7 @@
 package DAO;
 
+import DAO.Exceptions.NotEnoughCashException;
+
 /**
  *
  */

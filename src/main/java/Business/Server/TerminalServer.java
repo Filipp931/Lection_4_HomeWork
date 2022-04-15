@@ -1,9 +1,12 @@
 package Business.Server;
 
+import Business.Server.Exceptions.AccountIsLockedException;
+import Business.Server.Exceptions.CashWithdrawalException;
+import Business.Server.Exceptions.InvalidPinException;
 import DAO.Account;
-import DAO.AccountNotFoundException;
+import DAO.Exceptions.AccountNotFoundException;
 import DAO.Data;
-import DAO.NotEnoughCashException;
+import DAO.Exceptions.NotEnoughCashException;
 
 public class TerminalServer{
     private static TerminalServer terminalServer = new TerminalServer();

@@ -1,4 +1,4 @@
-package Business.Server;
+package Business.Server.Exceptions;
 
 public class AccountIsLockedException extends Throwable{
     private static final String message = "Account is locked! Remain seconds :";

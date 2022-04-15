@@ -1,4 +1,4 @@
-package Business.Server;
+package Business.Server.Exceptions;
 
 public class CashWithdrawalException extends Exception{
     public CashWithdrawalException() {
