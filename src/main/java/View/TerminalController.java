@@ -1,11 +1,6 @@
 package View;
 
-import DAO.Exceptions.AccountNotFoundException;
-import DAO.Exceptions.NotEnoughCashException;
 import Model.Client.TerminalImpl;
-import Model.Server.Exceptions.AccountIsLockedException;
-import Model.Server.Exceptions.CashMultipleException;
-import Model.Server.Exceptions.InvalidPinException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,11 +45,12 @@ public class TerminalController implements Initializable {
     private TextField messageTextField;
     @FXML
     private TextArea info;
-    private TerminalImpl terminal = new TerminalImpl();
+    private TerminalImpl terminal = new TerminalImpl(this);
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         getReady();
         pinField.textProperty().addListener((observable, oldValue, newValue) -> {
             checkPinSymbol();
@@ -65,28 +61,23 @@ public class TerminalController implements Initializable {
     public void checkPin(ActionEvent actionEvent) {
         String temp = pinField.getText();
         Integer pinCode = Integer.parseInt(temp);
-        try {
-            terminal.verifyPinCode(pinCode);
-        } catch (AccountIsLockedException e) {
-            printMessage("Аккаунт заблокирован, подождите " + e.getSecondsRemain()+" секунд;");
-            return;
-        } catch (InvalidPinException e) {
-            printMessage("Неверный Pin-код");
+        Boolean checkPin = terminal.verifyPinCode(pinCode);
+        if (checkPin) {
+            printMessage("Введен верный Pin-код");
+            balanceLabel.setDisable(false);
+            depositMoneyLabel.setDisable(false);
+            withdrawalMoneyLabel.setDisable(false);
+            balanceTextField.setDisable(false);
+            depositMoneyTextField.setDisable(false);
+            withdrawalMoneyTextField.setDisable(false);
+            getBalanceButton.setDisable(false);
+            depositMoneyButton.setDisable(false);
+            withdrawalMoneyButton.setDisable(false);
+            closeSessionButton.setDisable(false);
             pinField.clear();
-            return;
+        } else {
+            pinField.clear();
         }
-        printMessage("Введен верный Pin-код");
-        balanceLabel.setDisable(false);
-        depositMoneyLabel.setDisable(false);
-        withdrawalMoneyLabel.setDisable(false);
-        balanceTextField.setDisable(false);
-        depositMoneyTextField.setDisable(false);
-        withdrawalMoneyTextField.setDisable(false);
-        getBalanceButton.setDisable(false);
-        depositMoneyButton.setDisable(false);
-        withdrawalMoneyButton.setDisable(false);
-        closeSessionButton.setDisable(false);
-        pinField.clear();
     }
 
 
@@ -96,22 +87,19 @@ public class TerminalController implements Initializable {
         Integer accountNumber = null;
         try {
             accountNumber = Integer.parseInt(temp);
-
         } catch (NumberFormatException e) {
             printMessage("Номер аккаунта может состоять только из цифр");
         }
         if(accountNumber != null) {
-            try {
-                terminal.checkAccount(accountNumber);
-                printMessage("Аккаунт найден, введите Pin");
-                pinLabel.setDisable(false);
-                pinField.setDisable(false);
-                chkPinButton1.setDisable(false);
-            } catch (AccountNotFoundException e) {
-                printMessage("Аккаунт с номером "+accountNumber+" не найден");
-            }
-        }
+                boolean isFind = terminal.checkAccount(accountNumber);
+                if(isFind) {
+                    printMessage("Аккаунт найден, введите Pin");
+                    pinLabel.setDisable(false);
+                    pinField.setDisable(false);
+                    chkPinButton1.setDisable(false);
+                }
 
+        }
     }
 
     public void checkPinSymbol() {
@@ -140,24 +128,16 @@ public class TerminalController implements Initializable {
         } catch (NumberFormatException e) {
             printMessage("Введите числовое значение!");
             depositMoneyTextField.clear();
-        } catch (CashMultipleException e) {
-            printMessage("Cумма должна быть кратна 100");
         }
-
     }
 
     public void withdrawalMoney(ActionEvent actionEvent) {
         try {
             Integer cash = Integer.parseInt(withdrawalMoneyTextField.getText());
             balanceTextField.setText(String.valueOf(terminal.withdraw(cash)));
-            printMessage("Деньги успешно сняты");
         } catch (NumberFormatException e) {
             printMessage("Введите числовое значение!");
             withdrawalMoneyTextField.clear();
-        } catch (CashMultipleException e) {
-            printMessage("Cумма должна быть кратна 100");
-        } catch (NotEnoughCashException e) {
-            printMessage("Недостаточно денег на счете \n сумма не должна превышать "+terminal.checkAmount());
         }
     }
 
