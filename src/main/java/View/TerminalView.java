@@ -1,6 +1,5 @@
 package View;
 
-import Model.Server.TerminalServer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,17 +10,25 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class TerminalView extends Application {
-
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample.fxml"));
+    static TerminalController terminalController ;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
+
+        Parent root = loader.load();
+        terminalController = loader.getController();
         primaryStage.setTitle("Terminal");
         primaryStage.setScene(new Scene(root, 782, 400));
         primaryStage.show();
+
+    }
+
+    public static TerminalController getTerminalController() {
+        return terminalController;
     }
 
     public static void main(String[] args) {
-        TerminalServer terminalServer = new TerminalServer();
+
 /*        terminalServer.verifyAndGetAccount(new int[]{1, 2, 3, 3}, 449220l);
         terminalServer.verifyAndGetAccount(new int[]{1, 2, 3, 3}, 449220l);
         terminalServer.verifyAndGetAccount(new int[]{1, 2, 3, 3}, 449220l);
@@ -38,6 +45,7 @@ public class TerminalView extends Application {
         terminalServer.cashWithdrawal(9900);
         System.out.println(terminalServer.cashWithdrawal(200));*/
         launch();
+
 
     }
 

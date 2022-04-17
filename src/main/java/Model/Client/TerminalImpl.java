@@ -6,9 +6,12 @@ import Model.Server.Exceptions.AccountIsLockedException;
 import Model.Server.Exceptions.CashMultipleException;
 import Model.Server.Exceptions.InvalidPinException;
 import Model.Server.TerminalServer;
+import View.TerminalController;
+import View.TerminalView;
 
 public class TerminalImpl implements Terminal{
     private TerminalServer terminalServer = TerminalServer.getTerminalServer();
+    private TerminalController controller = TerminalView.getTerminalController();
 
     public boolean verifyPinCode(Integer pin) throws AccountIsLockedException, InvalidPinException {
         return terminalServer.verifyPinCode(pin);

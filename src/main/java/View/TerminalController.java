@@ -162,23 +162,11 @@ public class TerminalController implements Initializable {
     }
 
     public void closeSession(ActionEvent actionEvent) {
-        pinField.setDisable(false);
-        balanceTextField.setDisable(false);
+        getReady();
+        pinField.clear();
         balanceTextField.clear();
-        depositMoneyTextField.setDisable(false);
         depositMoneyTextField.clear();
-        withdrawalMoneyTextField.setDisable(false);
         withdrawalMoneyTextField.clear();
-        chkPinButton1.setDisable(false);
-        getBalanceButton.setDisable(false);
-        depositMoneyButton.setDisable(false);
-        withdrawalMoneyButton.setDisable(false);
-        closeSessionButton.setDisable(false);
-        pinLabel.setDisable(false);
-        balanceLabel.setDisable(false);
-        depositMoneyLabel.setDisable(false);
-        withdrawalMoneyLabel.setDisable(false);
-
     }
 
     public void printMessage(String message){
