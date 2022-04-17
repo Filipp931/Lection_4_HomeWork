@@ -9,18 +9,18 @@ public class Account {
     private final int[] pin; //пин-код
     private Integer balance; //деньги
     private final String owner; //ФИО владельца
-    private final Long accountNumber; //уникальный номер аккаунта
+    private final Integer accountNumber; //уникальный номер аккаунта
     private boolean isBlocked;
     private long blockTime;
 
-    public Account(int[] pin, String owner, Long accountNumber) {
+    public Account(int[] pin, String owner, Integer accountNumber, Integer balance) {
         this.pin = pin;
         this.owner = owner;
         this.accountNumber = accountNumber;
-        this.balance = 0;
+        this.balance = balance;
     }
 
-    public Long getAccountNumber() {
+    public Integer getAccountNumber() {
         return accountNumber;
     }
 

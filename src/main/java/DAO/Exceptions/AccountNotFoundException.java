@@ -1,7 +1,10 @@
 package DAO.Exceptions;
 
 public class AccountNotFoundException extends Exception{
-    public AccountNotFoundException(String message) {
-        super(message);
+    public AccountNotFoundException(Integer accountNumber) {
+        super("Account with number " + accountNumber + " not found.");
+    }
+
+    public AccountNotFoundException() {
     }
 }

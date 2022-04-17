@@ -1,4 +1,4 @@
-package Business.Server.Exceptions;
+package Model.Server.Exceptions;
 
 public class InvalidPinException extends Exception{
     public InvalidPinException() {
