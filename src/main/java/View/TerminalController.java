@@ -86,6 +86,7 @@ public class TerminalController implements Initializable {
         depositMoneyButton.setDisable(false);
         withdrawalMoneyButton.setDisable(false);
         closeSessionButton.setDisable(false);
+        pinField.clear();
     }
 
 
@@ -161,6 +162,23 @@ public class TerminalController implements Initializable {
     }
 
     public void closeSession(ActionEvent actionEvent) {
+        pinField.setDisable(false);
+        balanceTextField.setDisable(false);
+        balanceTextField.clear();
+        depositMoneyTextField.setDisable(false);
+        depositMoneyTextField.clear();
+        withdrawalMoneyTextField.setDisable(false);
+        withdrawalMoneyTextField.clear();
+        chkPinButton1.setDisable(false);
+        getBalanceButton.setDisable(false);
+        depositMoneyButton.setDisable(false);
+        withdrawalMoneyButton.setDisable(false);
+        closeSessionButton.setDisable(false);
+        pinLabel.setDisable(false);
+        balanceLabel.setDisable(false);
+        depositMoneyLabel.setDisable(false);
+        withdrawalMoneyLabel.setDisable(false);
+
     }
 
     public void printMessage(String message){
@@ -184,4 +202,5 @@ public class TerminalController implements Initializable {
         info.setText("449220\n459211\n448221\n142239");
 
     }
+
 }
