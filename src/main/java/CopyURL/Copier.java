@@ -52,9 +52,9 @@ public class Copier {
         return true;
     }
     /**
-     * Чтение String с консоли
-     *
-     * @return String, введенный с консоли
+     * Чтение URL в формате String
+     * @param bufferedReader - откуда читать
+     * @return String url
      */
     public static String readStringURL(BufferedReader bufferedReader) {
         String url = null;
@@ -70,8 +70,9 @@ public class Copier {
     }
 
     /**
-     * @param stringURL - String, введеная с консоли
-     * @return URL
+     * Конвертация string в URL
+     * @param stringURL - URL в String формате
+     * @return URL url
      * @throws  MalformedURLException - если формат введенного URL не соответствует
      */
     public static URL convertStringToURL(String stringURL) throws MalformedURLException {
@@ -80,9 +81,9 @@ public class Copier {
     }
 
     /**
-     * Открывает поток для чтения
+     * Открывает поток для чтения содержимого по URL
      * @param url
-     * @return BufferedReader - поток с URL
+     * @return BufferedReader
      * @throws IOException в случае, если не получается открыть поток
      */
     public static BufferedReader getReader(URL url) throws IOException {

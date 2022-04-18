@@ -12,7 +12,7 @@ public class TerminalServer implements Server {
     private static TerminalServer terminalServer = new TerminalServer();
     private Account account;
     private PinValidator pinValidator = null;
-    private static Data data = Data.getData();
+    private static Data Data = DAO.Data.getData();
     private Integer accountNumber;
 
     public static TerminalServer getTerminalServer() {
@@ -51,7 +51,7 @@ public class TerminalServer implements Server {
      */
     @Override
     public boolean checkAccount(Integer accountNumber) throws AccountNotFoundException {
-        Account temp = data.getAccountByNumber(accountNumber);
+        Account temp = Data.getAccountByNumber(accountNumber);
         if (temp == null) {
             return false;
         } else {

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 
 public class Data {
-    private static Data data = new Data();
+    private static Data Data = new Data();
 
     private ArrayList<Account> accountList = new ArrayList<Account>() {
     };
@@ -32,7 +32,7 @@ public class Data {
     }
 
     public static Data getData() {
-        return data;
+        return Data;
     }
 }
 

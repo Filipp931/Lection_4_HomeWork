@@ -43,7 +43,7 @@ public class Account {
             balance -= cash;
             return balance;
         } else {
-            throw new NotEnoughCashException();
+            throw new NotEnoughCashException(balance);
         }
     }
 
