@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="400.0" maxWidth="782.0" minHeight="400.0" minWidth="782.0" onInputMethodTextChanged="#checkPin" prefHeight="400.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.TerminalController">
+<AnchorPane maxHeight="400.0" maxWidth="782.0" minHeight="400.0" minWidth="782.0" prefHeight="400.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.TerminalController">
    <children>
-      <PasswordField fx:id="pinField" layoutX="192.0" layoutY="78.0" onInputMethodTextChanged="#checkPinSymbol" prefHeight="26.0" prefWidth="238.0" />
+      <PasswordField fx:id="pinField" layoutX="192.0" layoutY="78.0" prefHeight="26.0" prefWidth="238.0" />
       <TextField fx:id="messageTextField" layoutX="14.0" layoutY="328.0" prefHeight="67.0" prefWidth="562.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="215.0" AnchorPane.topAnchor="328.0">
          <font>
             <Font size="14.0" />
@@ -32,11 +32,6 @@
             <Font name="Times New Roman" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="chkPinButton1" layoutX="447.0" layoutY="75.0" mnemonicParsing="false" onAction="#checkPin" prefHeight="31.0" prefWidth="119.0" text="Проверить">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
       <Label fx:id="balanceLabel" layoutX="14.0" layoutY="126.0" prefHeight="20.0" prefWidth="130.0" text="Баланс:">
          <font>
             <Font name="Times New Roman" size="17.0" />

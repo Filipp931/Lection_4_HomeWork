@@ -10,6 +10,14 @@ public class PinValidator {
     public PinValidator(Account account) {
         this.account = account;
     }
+
+    /**
+     * Проверка Pin кода
+     * @param pin
+     * @return boolean - валидный pin или нет
+     * @throws AccountIsLockedException
+     * @throws InvalidPinException
+     */
     public boolean validate(int[] pin) throws AccountIsLockedException, InvalidPinException {
         if(checkAccountIsBlocked(account)) {
             throw new AccountIsLockedException(secondsRemain(account));
@@ -26,6 +34,12 @@ public class PinValidator {
         numberOfIncorrectAttempts = 0;
         return pinIsCorrect;
     }
+
+    /**
+     * Проверка заблокирован ли аккаунт
+     * @param account - аккаунт
+     * @return boolean isBlocked
+     */
     private boolean checkAccountIsBlocked(Account account) {
         if (!account.isBlocked()) {
             return false;

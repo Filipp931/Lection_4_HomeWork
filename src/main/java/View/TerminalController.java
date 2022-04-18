@@ -24,8 +24,6 @@ public class TerminalController implements Initializable {
     @FXML
     private Button chkAccountButton;
     @FXML
-    private Button chkPinButton1;
-    @FXML
     private Button getBalanceButton;
     @FXML
     private Button depositMoneyButton;
@@ -50,40 +48,42 @@ public class TerminalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         getReady();
         pinField.textProperty().addListener((observable, oldValue, newValue) -> {
-            checkPinSymbol();
-        });
-
+            Boolean isCorrect = false;
+            try {
+                String temp = pinField.getText();
+                if (temp.equals("")) return;
+                Integer pinCode = Integer.parseInt(temp);
+                isCorrect = terminal.verifyPinCode(pinCode); //Каждое нажатие должно восприниматься системой как ввод очередного символа пин-кода.
+            } catch (NumberFormatException e) {
+                printMessage("Pin-код может содержать только цифры");
+                resetPinFiled();
+            }
+            // если пин веный, то
+            if(isCorrect) {
+                    balanceLabel.setDisable(false);
+                    depositMoneyLabel.setDisable(false);
+                    withdrawalMoneyLabel.setDisable(false);
+                    balanceTextField.setDisable(false);
+                    depositMoneyTextField.setDisable(false);
+                    withdrawalMoneyTextField.setDisable(false);
+                    getBalanceButton.setDisable(false);
+                    depositMoneyButton.setDisable(false);
+                    withdrawalMoneyButton.setDisable(false);
+                    closeSessionButton.setDisable(false);
+                }
+            });
     }
-
-    public void checkPin(ActionEvent actionEvent) {
-        String temp = pinField.getText();
-        Integer pinCode = Integer.parseInt(temp);
-        Boolean checkPin = terminal.verifyPinCode(pinCode);
-        if (checkPin) {
-            printMessage("Введен верный Pin-код");
-            balanceLabel.setDisable(false);
-            depositMoneyLabel.setDisable(false);
-            withdrawalMoneyLabel.setDisable(false);
-            balanceTextField.setDisable(false);
-            depositMoneyTextField.setDisable(false);
-            withdrawalMoneyTextField.setDisable(false);
-            getBalanceButton.setDisable(false);
-            depositMoneyButton.setDisable(false);
-            withdrawalMoneyButton.setDisable(false);
-            closeSessionButton.setDisable(false);
-            pinField.clear();
-        } else {
-            pinField.clear();
-        }
+    public void resetPinFiled() {
+        Platform.runLater(() -> pinField.clear());
     }
-
-
 
     public void checkAccount(ActionEvent actionEvent) {
         String temp = accountNumberTextField.getText();
+        if(temp.equals("")){
+            printMessage("Введите номер аккаунта");
+        }
         Integer accountNumber = null;
         try {
             accountNumber = Integer.parseInt(temp);
@@ -91,31 +91,15 @@ public class TerminalController implements Initializable {
             printMessage("Номер аккаунта может состоять только из цифр");
         }
         if(accountNumber != null) {
-                boolean isFind = terminal.checkAccount(accountNumber);
-                if(isFind) {
-                    printMessage("Аккаунт найден, введите Pin");
+                if(terminal.checkAccount(accountNumber)) {
                     pinLabel.setDisable(false);
                     pinField.setDisable(false);
-                    chkPinButton1.setDisable(false);
                 }
 
         }
     }
 
-    public void checkPinSymbol() {
-        try {
-            String temp = pinField.getText();
-            if (temp.equals("")) return;
-            Integer.parseInt(temp);
-            if (temp.length() > 4) {
-                printMessage("Длина Pin-кода составляет 4 символа");
-                Platform.runLater(() -> pinField.clear());
-            }
-        } catch (NumberFormatException e) {
-            printMessage("Pin-код может содержать только цифры");
-            Platform.runLater(() -> pinField.clear());
-        }
-    }
+
 
     public void getBalance(ActionEvent actionEvent) {
         balanceTextField.setText(String.valueOf(terminal.checkAmount()));
@@ -158,7 +142,6 @@ public class TerminalController implements Initializable {
         balanceTextField.setEditable(false);
         depositMoneyTextField.setDisable(true);
         withdrawalMoneyTextField.setDisable(true);
-        chkPinButton1.setDisable(true);
         getBalanceButton.setDisable(true);
         depositMoneyButton.setDisable(true);
         withdrawalMoneyButton.setDisable(true);
