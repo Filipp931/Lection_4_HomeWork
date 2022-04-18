@@ -12,5 +12,4 @@ public interface Server {
     Integer getBalance();
     Integer depositCash(Integer cash) throws CashMultipleException;
     Integer cashWithdrawal(Integer cash) throws CashMultipleException, NotEnoughCashException;
-
 }
