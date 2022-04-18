@@ -1,4 +1,4 @@
-package DAO.Exceptions;
+package Model.DAO.Exceptions;
 
 public class AccountNotFoundException extends Exception{
     public AccountNotFoundException(Integer accountNumber) {

@@ -1,13 +1,12 @@
 package Model.Client;
 
-import DAO.Exceptions.AccountNotFoundException;
-import DAO.Exceptions.NotEnoughCashException;
+import Model.DAO.Exceptions.AccountNotFoundException;
+import Model.DAO.Exceptions.NotEnoughCashException;
 import Model.Server.Exceptions.AccountIsLockedException;
 import Model.Server.Exceptions.CashMultipleException;
 import Model.Server.Exceptions.InvalidPinException;
 import Model.Server.TerminalServer;
 import View.TerminalController;
-import javafx.application.Platform;
 
 public class TerminalImpl implements Terminal{
     private final TerminalServer terminalServer = TerminalServer.getTerminalServer();

@@ -1,7 +1,7 @@
 package Model.Server;
 import Model.Server.Exceptions.AccountIsLockedException;
 import Model.Server.Exceptions.InvalidPinException;
-import DAO.Account;
+import Model.DAO.Account;
 
 public class PinValidator {
     private Account account;

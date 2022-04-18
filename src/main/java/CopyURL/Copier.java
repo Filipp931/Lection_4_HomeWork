@@ -20,7 +20,6 @@ public class Copier {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
     /**
      * Чтение документа по URL и вывод в консоль

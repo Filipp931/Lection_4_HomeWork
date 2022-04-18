@@ -1,4 +1,4 @@
-package DAO.Exceptions;
+package Model.DAO.Exceptions;
 
 public class NotEnoughCashException extends Exception{
 

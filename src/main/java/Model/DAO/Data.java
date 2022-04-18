@@ -1,6 +1,6 @@
-package DAO;
+package Model.DAO;
 
-import DAO.Exceptions.AccountNotFoundException;
+import Model.DAO.Exceptions.AccountNotFoundException;
 
 import java.util.ArrayList;
 

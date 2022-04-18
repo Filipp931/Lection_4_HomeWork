@@ -1,6 +1,6 @@
 package Model.Client;
 
-import DAO.Exceptions.NotEnoughCashException;
+import Model.DAO.Exceptions.NotEnoughCashException;
 import Model.Server.Exceptions.CashMultipleException;
 
 public interface Terminal {

@@ -3,16 +3,16 @@ package Model.Server;
 import Model.Server.Exceptions.AccountIsLockedException;
 import Model.Server.Exceptions.CashMultipleException;
 import Model.Server.Exceptions.InvalidPinException;
-import DAO.Account;
-import DAO.Exceptions.AccountNotFoundException;
-import DAO.Data;
-import DAO.Exceptions.NotEnoughCashException;
+import Model.DAO.Account;
+import Model.DAO.Exceptions.AccountNotFoundException;
+import Model.DAO.Data;
+import Model.DAO.Exceptions.NotEnoughCashException;
 
 public class TerminalServer implements Server {
     private static TerminalServer terminalServer = new TerminalServer();
     private Account account;
     private PinValidator pinValidator = null;
-    private static Data Data = DAO.Data.getData();
+    private static Data Data = Model.DAO.Data.getData();
     private Integer accountNumber;
 
     public static TerminalServer getTerminalServer() {

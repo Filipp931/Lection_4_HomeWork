@@ -1,6 +1,6 @@
-package DAO;
+package Model.DAO;
 
-import DAO.Exceptions.NotEnoughCashException;
+import Model.DAO.Exceptions.NotEnoughCashException;
 
 /**
  *
