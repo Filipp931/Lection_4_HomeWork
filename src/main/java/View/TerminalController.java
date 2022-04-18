@@ -99,8 +99,6 @@ public class TerminalController implements Initializable {
         }
     }
 
-
-
     public void getBalance(ActionEvent actionEvent) {
         balanceTextField.setText(String.valueOf(terminal.checkAmount()));
     }

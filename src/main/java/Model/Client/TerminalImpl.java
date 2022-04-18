@@ -70,11 +70,11 @@ public class TerminalImpl implements Terminal{
     @Override
     public Integer deposit(Integer cash) {
         try {
-            return terminalServer.depositCash(cash);
+            terminalServer.depositCash(cash);
+            controller.printMessage("Сумма успешно внесена");
         } catch (CashMultipleException e) {
             controller.printMessage("Cумма должна быть кратна 100");
         }
-        controller.printMessage("Сумма успешно внесена");
         return terminalServer.getBalance();
     }
 

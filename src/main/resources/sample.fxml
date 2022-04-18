@@ -14,7 +14,7 @@
       <PasswordField fx:id="pinField" layoutX="192.0" layoutY="78.0" prefHeight="26.0" prefWidth="238.0" />
       <TextField fx:id="messageTextField" layoutX="14.0" layoutY="328.0" prefHeight="67.0" prefWidth="562.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="215.0" AnchorPane.topAnchor="328.0">
          <font>
-            <Font size="14.0" />
+            <Font size="17.0" />
          </font></TextField>
       <TextField fx:id="accountNumberTextField" layoutX="192.0" layoutY="27.0" prefHeight="26.0" prefWidth="237.0" />
       <Label layoutX="14.0" layoutY="27.0" prefHeight="20.0" prefWidth="130.0" text="Номер аккаунта:">
