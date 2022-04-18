@@ -48,6 +48,11 @@ public class TerminalImpl implements Terminal{
         return terminalServer.getBalance();
     }
 
+    /**
+     * Проверка существование аккаунта по номеру
+     * @param accountNumber - номер аккаунта
+     * @return isFind
+     */
     public boolean checkAccount(Integer accountNumber) {
         try {
             boolean isFind = terminalServer.checkAccount(accountNumber);
